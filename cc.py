@@ -88,7 +88,7 @@ url = ""
 proxy_ver = "5"
 brute = False
 out_file = "proxy.txt"
-thread_num = 10000
+thread_num = 1000
 data = ""
 cookies = ""
 ###############################
@@ -562,7 +562,6 @@ def DownloadProxies(proxy_ver):
 			"https://raw.githubusercontent.com/roosterkid/openproxylist/main/SOCKS5_RAW.txt",
 			"https://raw.githubusercontent.com/saschazesiger/Free-Proxies/master/proxies/socks5.txt",
 			"https://spys.me/socks.txt",
-			"http://www.socks24.org/feeds/posts/default"",
 		]
 		for api in socks5_api:
 			try:
@@ -576,8 +575,6 @@ def DownloadProxies(proxy_ver):
 		http_api = [
 			"https://raw.githubusercontent.com/officialputuid/KangProxy/KangProxy/http/http.txt",
 			"https://raw.githubusercontent.com/officialputuid/KangProxy/KangProxy/https/https.txt",
-			"https://github.com/zloi-user/hideip.me/raw/main/http.txt",
-			"https://github.com/zloi-user/hideip.me/raw/main/https.txt",
 			"https://raw.githubusercontent.com/monosans/proxy-list/main/proxies/http.txt",
 			"https://raw.githubusercontent.com/ErcinDedeoglu/proxies/main/proxies/http.txt",
 			"https://raw.githubusercontent.com/ErcinDedeoglu/proxies/main/proxies/https.txt",
@@ -730,7 +727,11 @@ def main():
 	if os.path.exists(out_file)!=True:
 		print("Proxies file not found")
 		return
-	proxies = open(out_file).readlines()	
+	try:
+		proxies = open(out_file, encoding='utf-8').readlines()  # Thêm encoding
+	except UnicodeDecodeError:
+		print("Lỗi: Không thể giải mã tệp proxy. Vui lòng kiểm tra định dạng tệp.")
+		return
 	check_list(out_file)
 	proxies = open(out_file).readlines()	
 	if len(proxies) == 0:
