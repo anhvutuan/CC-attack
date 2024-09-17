@@ -486,7 +486,6 @@ def DownloadProxies(proxy_ver):
 		f = open(out_file,'wb')
 		socks4_api = [
 			"https://raw.githubusercontent.com/officialputuid/KangProxy/KangProxy/socks4/socks4.txt",
-			"https://raw.githubusercontent.com/zloi-user/hideip.me/main/socks4.txt",
 			"https://raw.githubusercontent.com/proxifly/free-proxy-list/main/proxies/protocols/socks4/data.txt",
 			"https://raw.githubusercontent.com/monosans/proxy-list/main/proxies/socks4.txt",
 			"https://raw.githubusercontent.com/ErcinDedeoglu/proxies/main/proxies/socks4.txt",
